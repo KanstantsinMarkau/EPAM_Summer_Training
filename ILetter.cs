@@ -7,7 +7,7 @@ namespace Library1
 {
     public interface ILetter
     {
-        bool IsVowel();
-        bool IsConsonant();
+        bool IsVowel(string s);
+        bool IsConsonant(string s);
     }
 }

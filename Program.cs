@@ -10,9 +10,11 @@ namespace Library1
     {
         static void Main(string[] args)
         {
-            Word w = new Word();
-            if (w.IsWord("QwQ")) Console.WriteLine("1");
-            if (w.IsWord("qwe")) Console.WriteLine("2");
+            //Text t = new Text("QwQ. me . hd.");
+            Text t = new Text();
+            t = t.Parse("aaa?! no, aaaaa!");
+
+            
         }
     }
 }

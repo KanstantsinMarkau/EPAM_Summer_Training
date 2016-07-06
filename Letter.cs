@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace Library1
 {
-    public class Letter : ISymbol, ILetter
+    public class Letter : ILetter, ISymbol
     {
         private Regex vowels;
 
@@ -26,6 +26,7 @@ namespace Library1
         {
             return !IsVowel(ch);
         }
+
 
     }
 }
