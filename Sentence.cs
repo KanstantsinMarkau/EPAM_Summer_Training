@@ -40,7 +40,7 @@ namespace Library1
                     sign = new Sign(s.Substring(firstSentenceSeparator, fstSentenceSeparator.Length));
                     sentence.components.Add(sign);
                     buffer.Clear();
-                    int numberSubstring = firstSentenceSeparator + fstSentenceSeparator.Length + 1;
+                    int numberSubstring = firstSentenceSeparator + fstSentenceSeparator.Length;
                     if (numberSubstring < s.Length)
                         s = s.Substring(numberSubstring, s.Length - numberSubstring);
                     else s = null;
@@ -72,5 +72,26 @@ namespace Library1
             return i;
         }
 
+        public bool IsInterrogativeSentence()
+        {
+            if (components.Last().Value == "?")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public ICollection<ISymbol> FindByLength(int len)
+        {
+            ICollection<ISymbol> col = new List<ISymbol>();
+            foreach (ISymbol x in components)
+            {
+                if (x.Value.Length == len)
+                    col.Add(x);
+            }
+
+
+            return col;
+        }
     }
 }

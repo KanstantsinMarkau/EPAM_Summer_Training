@@ -67,5 +67,21 @@ namespace Library1
             
 
         }
+
+        public void PrintWordsWithLength(int i)
+        {
+            foreach (ISentence s in sentences)
+            {
+                if (s.IsInterrogativeSentence())
+                {
+                    ICollection<ISymbol> col = s.FindByLength(i);
+                    IEnumerable<ISymbol> withoutRepeat = col.Distinct();
+                    foreach (var x in withoutRepeat)
+                    {
+                        Console.WriteLine(x.Value);
+                    }
+                }
+            }
+        }
     }
 }

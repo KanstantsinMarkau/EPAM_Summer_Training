@@ -11,5 +11,8 @@ namespace Library1
         string ToString();
 
         int WordsCount();
+        bool IsInterrogativeSentence();
+        ICollection<ISymbol> FindByLength(int len);
+
     }
 }
