@@ -7,7 +7,8 @@ namespace Library1
 {
     public interface ISymbol
     {
-        //int compareTo(char ch);
+        string Value { get; set; }
+        string ToString();
 
 
     }

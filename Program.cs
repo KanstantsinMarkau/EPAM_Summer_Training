@@ -12,9 +12,9 @@ namespace Library1
         {
             //Text t = new Text("QwQ. me . hd.");
             Text t = new Text();
-            t = t.Parse("aaa?! no, aaaaa!");
-
-            
+            t = t.Parse("but? it's so speciefic. no, aaaaa! aaa?!");
+            t.PrintText();
+            t.PrintSentencesByIncrement();
         }
     }
 }

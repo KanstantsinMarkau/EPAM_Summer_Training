@@ -14,36 +14,6 @@ namespace Library1
             sentences = new List<ISentence>();
         }
 
-        //public ICollection<ISentence> Parse(string s)
-        //{
-        //    Sign sign = new Sign();
-        //    ICollection<ISentence> col = new List<ISentence>();
-        //    int i = 0;
-        //    string tmp = String.Empty;
-        //    foreach (var x in s)
-        //        if (sign.IsEndSign(s[i].ToString()))
-        //        {
-        //            tmp += s[i];
-        //            col.Add(new Sentence(tmp));
-        //            if(i<s.Length-1) i++;
-        //            while (s[i] == ' ') if (i < s.Length - 1) i++;
-        //            tmp = String.Empty;
-        //        }
-        //        else
-        //        {
-        //            if (i < s.Length - 1)
-        //            {
-        //                i++;
-        //                tmp += s[i];
-        //            }
-        //        } Console.WriteLine("11");
-        //    foreach (Sentence sent in col)
-        //    {
-        //        sent.ParseSentence(sent.ToString());
-        //    }
-        //    return col;
-        //}
-
         public Text Parse(string s)
         {
             Sign sign = new Sign();
@@ -75,6 +45,27 @@ namespace Library1
 
             }
             return text;
+        }
+        public void PrintText()
+        {
+            foreach (var x in sentences)
+            {
+                Console.Write(x.ToString());
+            }
+            Console.WriteLine();
+        }
+
+        public void PrintSentencesByIncrement()
+        {
+            ICollection<ISentence> t = this.sentences;
+            IEnumerable<ISentence> i = t.OrderBy(sentence => sentence.WordsCount());
+            foreach (var x in i)
+            {
+                Console.Write(x.ToString());
+            }
+            Console.WriteLine();
+            
+
         }
     }
 }

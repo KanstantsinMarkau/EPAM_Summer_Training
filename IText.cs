@@ -7,5 +7,8 @@ namespace Library1
 {
     public interface IText
     {
+        Text Parse(string s);
+        void PrintText();
+        void PrintSentencesByIncrement();
     }
 }

@@ -15,11 +15,6 @@ namespace Library1
 
         }
 
-        public void deleteWhiteSpaces()
-        {
-
-        }
-
         public Sentence ParseSentence(string s)
         {
             Sign sign = new Sign();
@@ -42,9 +37,8 @@ namespace Library1
                     buffer.Append(s.Substring(0, firstSentenceSeparator));
                     Word word = new Word(buffer.ToString());
                     sentence.components.Add(word);
-                    Console.WriteLine(buffer);
                     sign = new Sign(s.Substring(firstSentenceSeparator, fstSentenceSeparator.Length));
-                    Console.WriteLine(s.Substring(firstSentenceSeparator, fstSentenceSeparator.Length));
+                    sentence.components.Add(sign);
                     buffer.Clear();
                     int numberSubstring = firstSentenceSeparator + fstSentenceSeparator.Length + 1;
                     if (numberSubstring < s.Length)
@@ -59,8 +53,24 @@ namespace Library1
         {
             string s = String.Empty;
             foreach (ISymbol sym in components)
-                s+=sym+" ";
-            return s.Substring(0,s.Length-1);
+            {
+                s += sym.Value;
+                if (sym.GetType() == typeof(Sign))
+                    s += " ";
+            }
+            return s;
         }
+
+        public int WordsCount()
+        {
+            int i = 0;
+            foreach (ISymbol sym in components)
+            {
+                if (sym.GetType() == typeof(Word))
+                    i++;
+            } Console.WriteLine(i);
+            return i;
+        }
+
     }
 }

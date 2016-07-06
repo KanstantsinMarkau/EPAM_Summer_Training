@@ -8,7 +8,11 @@ namespace Library1
     public class Sign : ISymbol
     {
 
-        private string sign;
+        public string Value
+        {
+            get;
+            set;
+        }
 
         private string[] sentenceSeparators = new string[] { "...", "?!", "?", "!", "." };
         private string[] wordSeparators = new string[] { " ", " - ", ";", "," };
@@ -16,12 +20,12 @@ namespace Library1
 
         public Sign(string inp)
         {
-            this.sign = inp;
+            this.Value = inp;
         }
 
         public Sign()
         {
-            this.sign = String.Empty;
+            this.Value = String.Empty;
         }
 
         public bool IsEndSign(string s)
@@ -30,12 +34,6 @@ namespace Library1
                 return true;
             return false;
 
-            //Regex delimiters = new Regex("[.?!]");
-            //if (delimiters.Match(s).ToString().Equals(s))
-            //{
-            //    return true;
-            //}
-            //return false;
         }
 
         public bool IsWordDelimiter(string s)
@@ -44,12 +42,6 @@ namespace Library1
                 return true;
             return false;
 
-            //Regex delimiters = new Regex("[,-;]");
-            //if (delimiters.Match(s).ToString().Equals(s))
-            //{
-            //    return true;
-            //}
-            //return false;
         }
 
         public IEnumerable<string> SentenceSeparators()

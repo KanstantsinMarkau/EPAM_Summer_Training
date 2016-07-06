@@ -7,5 +7,9 @@ namespace Library1
 {
     public interface ISentence
     {
+        Sentence ParseSentence(string s);
+        string ToString();
+
+        int WordsCount();
     }
 }

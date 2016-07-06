@@ -10,6 +10,12 @@ namespace Library1
     {
         private Regex vowels;
 
+        public string Value
+        {
+            get;
+            set;
+        }
+
         public Letter()
         {
             vowels = new Regex("[aAeEuUiIoOyY]");

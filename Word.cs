@@ -8,7 +8,11 @@ namespace Library1
 {
     public class Word : ISymbol
     {
-        private string word;
+        public string Value
+        {
+            get;
+            set;
+        }
 
         public int Length
         {
@@ -18,13 +22,13 @@ namespace Library1
 
         public Word()
         {
-            this.word = String.Empty;
+            this.Value = String.Empty;
             Length = 0;
         }
 
         public Word(string s)
         {
-            this.word = s;
+            this.Value = s;
             Length = s.Length;
         }
 
