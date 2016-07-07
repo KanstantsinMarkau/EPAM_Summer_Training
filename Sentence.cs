@@ -68,7 +68,7 @@ namespace Library1
             {
                 if (sym.GetType() == typeof(Word))
                     i++;
-            } Console.WriteLine(i);
+            }
             return i;
         }
 
@@ -92,6 +92,36 @@ namespace Library1
 
 
             return col;
+        }
+
+        public Sentence DeleteConsonance(int len)
+        {
+            Sentence col = new Sentence();
+            Letter let = new Letter();
+            foreach (ISymbol s in this.components)
+            {
+                if (!(let.IsConsonant(s.Value) && s.Value.Length==len))
+                {
+                    col.components.Add(s);
+                }
+                    
+            }
+            return col;
+        }
+
+        public Sentence ReplaceWord(int length, string substring)
+        {
+            Sentence sen = new Sentence();
+            foreach (ISymbol s in this.components)
+            {
+                if (s.Value.Length == length)
+                {
+                    sen.components.Add(new Word(substring));
+                }
+                else sen.components.Add(s);
+            }
+            sen = ParseSentence(sen.ToString());
+            return sen;
         }
     }
 }

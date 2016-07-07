@@ -23,7 +23,7 @@ namespace Library1
 
         public bool IsVowel(string ch)
         {
-            if (vowels.IsMatch(ch))
+            if (vowels.IsMatch(ch[0].ToString()))
                 return true;
             return false;
         }

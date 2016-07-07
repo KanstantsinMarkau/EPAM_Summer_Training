@@ -10,5 +10,7 @@ namespace Library1
         Text Parse(string s);
         void PrintText();
         void PrintSentencesByIncrement();
+        Text ReplaceWords(int numberString, int length, string substring);
+        Text DeleteWordsStartingConsonance(int i);
     }
 }

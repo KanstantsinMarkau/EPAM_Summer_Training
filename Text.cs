@@ -17,7 +17,7 @@ namespace Library1
         public Text Parse(string s)
         {
             Sign sign = new Sign();
-            var sentenceSeparators = sign.SentenceSeparators();
+            var sentenceSeparators = sign.SentenceSeparators().OrderByDescending(x => x.Length);
             int bufferlength = 10000;
             Text text = new Text();
             StringBuilder buffer = new StringBuilder(bufferlength);
@@ -25,13 +25,26 @@ namespace Library1
             while (s != null)
             {
                 int firstSentenceSeparator = -1;
-                string fstSentenceSeparator = sentenceSeparators.FirstOrDefault(
-                    x =>
+                string fstSentenceSeparator = String.Empty;
+                foreach (var x in sentenceSeparators)
+                {
+                    if (firstSentenceSeparator >= 0 && s.IndexOf(x) >= 0)
+                    {
+                        if (s.IndexOf(x) < firstSentenceSeparator)
+                        {
+                            fstSentenceSeparator = x;
+                        }
+                        firstSentenceSeparator = Math.Min(s.IndexOf(x), firstSentenceSeparator);
+
+                    }
+                    if (firstSentenceSeparator == -1 && s.IndexOf(x) >= 0)
                     {
                         firstSentenceSeparator = s.IndexOf(x);
-                        return firstSentenceSeparator >= 0;
-                    });
-                if (fstSentenceSeparator != null)
+                        fstSentenceSeparator = x;
+                    }
+                }
+                
+                if (fstSentenceSeparator != String.Empty)
                 {
                     buffer.Append(s.Substring(0, firstSentenceSeparator + fstSentenceSeparator.Length));
                     Sentence sen = new Sentence();
@@ -64,7 +77,7 @@ namespace Library1
                 Console.Write(x.ToString());
             }
             Console.WriteLine();
-            
+
 
         }
 
@@ -82,6 +95,35 @@ namespace Library1
                     }
                 }
             }
+        }
+
+        public Text DeleteWordsStartingConsonance(int i)
+        {
+            Text t = new Text();
+            foreach (ISentence s in this.sentences)
+            {
+                t.sentences.Add(s.DeleteConsonance(i));
+            }
+            return t;
+        }
+
+        public Text ReplaceWords(int numberString, int length, string substring)
+        {
+            Text t = new Text();
+            int i = 0;
+            foreach (ISentence s in this.sentences)
+            {
+                if (i != numberString)
+                {
+                    t.sentences.Add(s);
+                }
+                else
+                {
+                    t.sentences.Add(s.ReplaceWord(length, substring));
+                }
+                i++;
+            }
+            return t;
         }
     }
 }

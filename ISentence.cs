@@ -13,6 +13,7 @@ namespace Library1
         int WordsCount();
         bool IsInterrogativeSentence();
         ICollection<ISymbol> FindByLength(int len);
-
+        Sentence DeleteConsonance(int length);
+        Sentence ReplaceWord(int length, string substring);
     }
 }
